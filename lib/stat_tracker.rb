@@ -111,6 +111,44 @@ class StatTracker
 		team = teams.find {|team| team.id == id_of_team.to_i}
 		team.name
 	end
+
+	 def all_goals_scored_on_all_time(id)
+                all_goals = total_games_for_team_scores.sum(0) do |game|
+                        if game[0] == id
+                                game[3]
+                        elsif game[2] == id
+                                game[1]
+                        else
+                                0
+                        end
+                end
+                all_goals
+        end
+
+        def average_total_defensive_efficiency(id)
+              total = all_goals_scored_on_all_time(id).to_f / games_played_all_time(id).to_f
+		total.round(4)
+        end
+
+	def all_teams_average_defense
+		hash = {}
+		team_ids.map do |team|
+			hash[team.to_s] = average_total_defensive_efficiency(team)
+		end
+		hash
+	end	
+	
+	def worst_defense
+		id_of_team = all_teams_average_defense.key(all_teams_average_defense.values.max)
+		team = teams.find {|team| team.id == id_of_team.to_i}
+                team.name
+	end
 		
+
+	def best_defense
+		id_of_team = all_teams_average_defense.key(all_teams_average_defense.values.min)
+		team = teams.find {|team| team.id == id_of_team.to_i}
+                team.name
+	end		
 			
 end
