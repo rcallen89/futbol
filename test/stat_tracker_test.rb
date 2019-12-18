@@ -19,6 +19,7 @@ class StatTrackerTest < Minitest::Test
 
 	def test_it_exists
 		assert_instance_of StatTracker, @stat_tracker
+		binding.pry
 	end
 
 	def test_stat_tracker_attributes

@@ -33,4 +33,43 @@ class StatTracker
 		season_storage
 	end
 
+	def count_of_teams
+		teams.size
+	end
+
+	def games
+		games = []
+		seasons.each do |season|
+			season.games_by_type.values.each do |game_type|
+				game_type.each do |game|
+					game_array = []
+                                        game_array << game
+                                        games << game_array
+				end
+			end
+		end
+		games = games.flatten(1)
+                
+	end
+
+        def total_games_for_team_scores
+                narrowed_games = []
+                games.each do |game|
+                        narrowed_game = []
+                        narrowed_game << game.home_team_id
+                        narrowed_game << game.home_goals
+                        narrowed_game << game.away_team_id
+                        narrowed_game << game.away_goals
+                        narrowed_games << narrowed_game
+                end
+                narrowed_games
+        end
+
+        def team_ids
+                teams.map { |team| team.id}
+        end
+
+        def games_played(id)
+                    	
+
 end
