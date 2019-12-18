@@ -38,17 +38,17 @@ class StatTracker
 	end
 
 	def games
-		games = []
+		all_games = []
 		seasons.each do |season|
 			season.games_by_type.values.each do |game_type|
 				game_type.each do |game|
 					game_array = []
                                         game_array << game
-                                        games << game_array
+                                        all_games << game_array
 				end
 			end
 		end
-		games = games.flatten(1)
+		all_games = all_games.flatten(1)
                 
 	end
 
@@ -69,7 +69,27 @@ class StatTracker
                 teams.map { |team| team.id}
         end
 
-        def games_played(id)
-                    	
+        def games_played_all_time(id)
+ 		games.count { |game| game.home_team_id == id || game.away_team_id == id }
+	end
+
+	def all_goals_scored_all_time(id)
+		all_goals = total_games_for_team_scores.sum(0) do |game|
+			if game[0] == id
+				game[1]
+			elsif game[2] == id
+				game[3]
+			else
+				0
+			end
+		end
+		all_goals
+	end
+        
+        def average_total_offensive_efficiency(id)
+                all_goals_scored_all_time(id).to_f / games_played_all_time(id).to_f
+        end.round(4)
+
+        def
 
 end
