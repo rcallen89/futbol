@@ -5,6 +5,8 @@ module SeasonSearchable
   end
 
   def winningest_coach
-    
+    game_amount = Season.all.coach_find_all {|season| season.coach_finder}.length
+    require "pry"; binding.pry
+
   end
 end
