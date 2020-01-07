@@ -88,13 +88,8 @@ module SeasonSearchable
   def season_wins(team_id)
     team = teams.find {|team| team.team_id.to_s == team_id}
     season_wins = team.stats_by_season.reduce({}) do |acc, (season, values)|
-      # if (values[:postseason][:win_percentage] > 0)
       acc[season] = ((values[:regular_season][:win_percentage]))
-      # else
-      # acc[season] = (values[:regular_season][:win_percentage])
-      # end
-
-    acc
+      acc
     end
   end
 
