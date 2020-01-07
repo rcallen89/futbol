@@ -59,4 +59,8 @@ class Game
     return @away_team_id if @away_goals > @home_goals
     return nil
   end
+
+  def Game.stats
+
+  end
 end
