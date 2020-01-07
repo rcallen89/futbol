@@ -9,8 +9,11 @@ module SeasonSearchable
       coach_wins[game.coach_finder] += 1
       acc
     end
-    win_percentage = all_games_coach_played.reduce(Hash.new(0)) do |acc, coach|
-
+    win_percentage = all_games_coach_played.reduce(Hash.new) do |acc, coach, game|
+      acc[coach] = coach_wins[coach]/all_games_coach_played[coach]
+      #line 13 is returning error dividing by zero
+      acc
+    end
     require "pry"; binding.pry
   end
 end
