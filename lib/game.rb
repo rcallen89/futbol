@@ -60,7 +60,8 @@ class Game
     return nil
   end
 
-  def Game.stats
-
+  def coach_finder
+    return nil if winner == nil
+    @stats[winner.to_s][:Coach]
   end
 end
