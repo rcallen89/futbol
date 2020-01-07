@@ -36,7 +36,6 @@ class Game
     @venue = game_info[:venue]
     @venue_link = game_info[:venue_link]
     @stats = stat_results(stat_array)
-    require "pry"; binding.pry
     @@all << self
   end
 
