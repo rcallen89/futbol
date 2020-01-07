@@ -10,7 +10,7 @@ class Team
 		end
 		teams_storage
   end
-  
+
   attr_reader :team_id,
               :franchise_id,
               :team_name,
@@ -155,15 +155,4 @@ class Team
     home_games + away_games
   end
 
-  def home_games_won
-    home_won = home_games.find_all do |game|
-      game.winner == @team_id
-    end
-  end
-
-  def away_games_won
-    away_won = away_games.find_all do |game|
-      game.winner == @team_id
-    end
-  end
 end
