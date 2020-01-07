@@ -25,12 +25,4 @@ class StatTracker < League
   def game_stat_check
     Game.all.find_all {|game| game.stats.keys[1].to_i != game.home_team_id}
   end
-
-  def winningest_coach
-    require "pry"; binding.pry
-    game_amount = Game.all.find_all {|game| game.coach_finder}.length
-    win_amount = Season.all.coach
-    # win_percentage = Season.all.coach
-  end
-  require "pry"; binding.pry
 end
