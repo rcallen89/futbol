@@ -93,4 +93,5 @@ class GameTest < MiniTest::Test
     assert_equal 3, Game.all.length
     assert_instance_of Game, Game.all[0]
   end
+
 end

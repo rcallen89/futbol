@@ -115,4 +115,5 @@ class TeamTest < MiniTest::Test
   def test_can_find_total_scores_against
     assert_equal 1.5, @team.total_scores_against
   end
+
 end
