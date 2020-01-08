@@ -222,4 +222,32 @@ class StatTrackerTest < Minitest::Test
 	def test_worst_season_can_be_returned
 		assert_equal "20122013", @stat_tracker2.worst_season("3")
 	end
+
+	def test_best_season_can_be_returned
+		assert_equal "20122013", @stat_tracker2.best_season("1")
+	end
+
+	# def test_coach_winningest_can_be_returned
+	# 	binding.pry
+	# end
+
+	def test_least_accurate_team_can_be_returned
+		assert_equal "Chicago Fire", @stat_tracker2.least_accurate_team("20132014")
+	end
+
+	def test_most_accurate_team_can_be_returned
+		assert_equal "Atlanta United", @stat_tracker2.most_accurate_team("20122013")
+	end
+
+	def test_biggest_suprise_can_be_returned
+		assert_equal "Houston Dynamo", @stat_tracker2.biggest_surprise("20122013")
+	end
+
+	def test_biggest_bust_can_be_returned
+		assert_equal "Atlanta United", @stat_tracker2.biggest_bust("20122013")
+	end
+
+	# def test_worst_coach_can_be_returned
+	# 	binding.pry
+	# end
 end
