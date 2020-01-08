@@ -72,7 +72,6 @@ module SeasonSearchable
     teams_accuracy.key(teams_accuracy.values.reject{|num| num.nan?}.min)
   end
 
-
   def best_season(team_id)
     season_data = season_wins(team_id)
     season_data.key(season_data.values.max)
@@ -108,4 +107,5 @@ module SeasonSearchable
     tackles = tackle_hash(season_id)
     teams.find {|team| tackles.key(tackles.values.max) == team.team_id.to_s}.team_name
   end
+
 end
