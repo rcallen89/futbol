@@ -83,17 +83,28 @@ module SeasonSearchable
   def season_wins(team_id)
     team = teams.find {|team| team.team_id.to_s == team_id}
     season_wins = team.stats_by_season.reduce({}) do |acc, (season, values)|
-      # if (values[:postseason][:win_percentage] > 0)
       acc[season] = ((values[:regular_season][:win_percentage]))
-      # else
-      # acc[season] = (values[:regular_season][:win_percentage])
-      # end
-
-    acc
+      acc
     end
   end
 
-  # def best_season(team_id)
+  def tackle_hash(season_id)
+    season = Season.all.find {|season| season.id.to_s == season_id}
+    team_tackles = season.games_unsorted.reduce(Hash.new(0)) do |acc, game|
+      acc[game.stats.keys[0]] += game.stats.to_a[0][1][:Tackles].to_i
+      acc[game.stats.keys[1]] += game.stats.to_a[1][1][:Tackles].to_i
+      acc
+    end
+  end
 
-  # end
+  def fewest_tackles(season_id)
+    tackles = tackle_hash(season_id)
+    teams.find {|team| tackles.key(tackles.values.min) == team.team_id.to_s}.team_name
+  end
+
+  def most_tackles(season_id)
+    tackles = tackle_hash(season_id)
+    teams.find {|team| tackles.key(tackles.values.max) == team.team_id.to_s}.team_name
+  end
+
 end
