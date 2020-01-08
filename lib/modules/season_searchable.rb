@@ -38,6 +38,7 @@ module SeasonSearchable
       acc[team] = win - reg_win_percent[team]
       acc
     end
+    require 'pry'; binding.pry
   end
 
   def biggest_bust(season_id)
@@ -71,10 +72,6 @@ module SeasonSearchable
     teams_accuracy.key(teams_accuracy.values.reject{|num| num.nan?}.min)
   end
 
-  def tackles_in_season(season_id)
-    season = Season.all.find {|find| season.id.to_s == season_id }
-
-  end
 
   def best_season(team_id)
     season_data = season_wins(team_id)
