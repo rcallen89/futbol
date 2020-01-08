@@ -38,7 +38,6 @@ module SeasonSearchable
       acc[team] = win - reg_win_percent[team]
       acc
     end
-    require 'pry'; binding.pry
   end
 
   def biggest_bust(season_id)
