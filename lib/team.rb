@@ -2,7 +2,6 @@ require_relative "season"
 require_relative "game"
 
 class Team
-
   def self.from_csv(team_path)
 		teams_storage = []
 		CSV.foreach(team_path, :headers => true, header_converters: :symbol) do |row|
@@ -11,15 +10,9 @@ class Team
 		teams_storage
   end
 
-  attr_reader :team_id,
-              :franchise_id,
-              :team_name,
-              :abbreviation,
-              :stadium,
-              :link,
-              :away_games,
-              :home_games,
-              :stats_by_season
+  attr_reader :team_id, :franchise_id, :team_name,
+              :abbreviation, :stadium, :link,
+              :away_games, :home_games, :stats_by_season
 
   def initialize(team_info)
     @team_id = team_info[:team_id].to_i
@@ -154,5 +147,4 @@ class Team
   def all_games_played
     home_games + away_games
   end
-
 end

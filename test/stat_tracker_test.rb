@@ -4,7 +4,7 @@ require_relative '../lib/stat_tracker'
 require 'pry'
 
 class StatTrackerTest < Minitest::Test
-	def setup
+  def setup
 		game_path = './test/fixtures/truncated_games.csv'
 		team_path = './test/fixtures/truncated_teams.csv'
 		game_teams_path = './test/fixtures/truncated_game_teams.csv'
@@ -243,13 +243,13 @@ class StatTrackerTest < Minitest::Test
 		assert_equal "Houston Dynamo", @stat_tracker2.biggest_surprise("20122013")
 	end
 
-	def test_biggest_bust_can_be_returned
+  def test_biggest_bust_can_be_returned
 		assert_equal "Atlanta United", @stat_tracker2.biggest_bust("20122013")
   end
   
   def test_team_ids
 		assert_includes @stat_tracker2.team_ids, 4
-	end
+  end
 
 	def test_games_between_teams
 		assert_includes @stat_tracker2.games_between_teams(2, 1), [1, 0, 3]
