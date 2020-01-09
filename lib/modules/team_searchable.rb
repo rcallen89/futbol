@@ -5,7 +5,8 @@ module TeamSearchable
 	end
 
   def highest_scoring_visitor
-		teams.max_by(&:average_goals_away).team_name
+    merge_sort(teams, "average_goals_away")[-1].team_name
+		# teams.max_by(&:average_goals_away).team_name
   end
 
   def highest_scoring_home_team
@@ -45,7 +46,7 @@ module TeamSearchable
 		teams.min_by(&:total_scores_against).team_name
 	end
 
-	def worst_defense
+  def worst_defense
 		teams.max_by(&:total_scores_against).team_name
   end
 

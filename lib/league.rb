@@ -17,7 +17,7 @@ class League
 		@game_teams = locations[:game_teams]
   end
 
-	def self.from_csv(locations)
+  def self.from_csv(locations)
 		self.new(locations)
   end
 

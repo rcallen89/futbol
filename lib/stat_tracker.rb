@@ -3,12 +3,14 @@ require_relative './modules/team_searchable'
 require_relative './modules/game_searchable'
 require_relative './modules/season_searchable'
 require_relative './modules/league_searchable'
+require_relative './modules/merge_sortable'
 
 class StatTracker < League
   include TeamSearchable
   include GameSearchable
   include SeasonSearchable
-	include LeagueSearchable
+  include LeagueSearchable
+  include MergeSort
 
 	def count_of_games_by_season
 		games_by_season = {}
@@ -17,7 +19,7 @@ class StatTracker < League
 	end
 
 
-	def average_goals_by_season
+  def average_goals_by_season
 		@seasons.reduce({}) do |acc, season|
 			acc[season.id.to_s] = (season.games_unsorted.sum {|game| game.total_score}/season.games_unsorted.length.to_f).round(2)
 			acc
